@@ -1,0 +1,31 @@
+TOPIC: VPN Connection Issues
+
+ISSUE: VPN not connecting from home
+SOLUTION:
+1. Make sure you are connected to the internet first.
+2. Open the VPN client (Cisco AnyConnect or GlobalProtect).
+3. Enter the VPN server address: vpn.company.com
+4. Use your Active Directory username and password.
+5. If MFA is enabled, approve the push notification on your phone.
+6. If connection still fails, try restarting the VPN client.
+7. If the problem persists, flush DNS: open command prompt and type "ipconfig /flushdns"
+8. Check if your firewall or antivirus is blocking the VPN client.
+ESCALATION: If none of the above works, raise a ticket with priority P2.
+
+ISSUE: VPN connected but cannot access internal resources
+SOLUTION:
+1. Disconnect and reconnect the VPN.
+2. Check if split tunneling is enabled — if yes, only internal traffic goes through VPN.
+3. Try accessing by IP address instead of hostname.
+4. Clear your browser cache and try again.
+5. Check if the specific resource you are trying to access is down using the status page: status.company.com
+ESCALATION: Raise a ticket with the specific resource name that is not accessible.
+
+ISSUE: VPN keeps disconnecting frequently
+SOLUTION:
+1. Check your internet connection stability.
+2. Switch from WiFi to wired connection if possible.
+3. Update the VPN client to the latest version.
+4. Disable sleep/hibernate mode while on VPN.
+5. Contact your ISP if internet itself is unstable.
+ESCALATION: Raise a P3 ticket if problem persists for more than a day.

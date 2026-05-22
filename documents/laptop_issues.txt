@@ -1,0 +1,45 @@
+TOPIC: Laptop and Hardware Issues
+
+ISSUE: Laptop is very slow
+SOLUTION:
+1. Restart the laptop — do not just sleep/hibernate.
+2. Check Task Manager for processes consuming high CPU or RAM.
+3. Ensure you have at least 10% free disk space.
+4. Run Disk Cleanup: search "Disk Cleanup" in Start menu.
+5. Disable startup programs: Task Manager > Startup tab.
+6. Check if Windows Update is running in background.
+7. Ensure your laptop is not overheating — clean the vents.
+8. If laptop is more than 4 years old, request a hardware upgrade.
+ESCALATION: Raise a P3 ticket with details of which applications are slow.
+
+ISSUE: Laptop not booting or stuck on startup
+SOLUTION:
+1. Hold power button for 10 seconds to force shutdown, then restart.
+2. Try booting in Safe Mode: press F8 during startup.
+3. If BitLocker screen appears, enter your recovery key from: bitlocker.company.com
+4. If Windows is corrupted, IT will need to reimage the laptop.
+ESCALATION: Raise a P1 ticket immediately — this is a critical issue.
+
+ISSUE: External monitor not detected
+SOLUTION:
+1. Check the HDMI or DisplayPort cable connection at both ends.
+2. Press Windows + P and select "Extend" or "Duplicate".
+3. Right-click Desktop > Display Settings > Detect.
+4. Try a different cable or different port on the laptop.
+5. Update display drivers: Device Manager > Display Adapters > Update Driver.
+ESCALATION: Raise a P3 ticket if monitor still not detected after above steps.
+
+ISSUE: Laptop battery draining too fast
+SOLUTION:
+1. Go to Power Settings and select "Balanced" mode.
+2. Reduce screen brightness.
+3. Close background applications consuming power.
+4. Check battery health: open Command Prompt, type "powercfg /batteryreport"
+5. If battery health is below 50%, request a battery replacement.
+ESCALATION: Raise a P3 ticket requesting battery replacement with battery report attached.
+
+PRIORITY LEVELS:
+P1 - Critical: System completely down, work stopped. Response within 1 hour.
+P2 - High: Major functionality affected. Response within 4 hours.
+P3 - Medium: Minor issue, workaround available. Response within 1 business day.
+P4 - Low: Cosmetic or enhancement request. Response within 3 business days.
