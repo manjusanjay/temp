@@ -44,7 +44,8 @@ pipeline {
                     \\"pr_action\\": \\"merge\\",
                     \\"repo\\": \\"manjusanjay/temp\\",
                     \\"base_branch\\": \\"release\\",
-                    \\"head_branch\\": \\"develop\\"
+                    \\"head_branch\\": \\"develop\\",
+                    \\"pr_number\\": \\"${PR_NUMBER}\\"
                 }" || true
             '''
             echo 'Tests passed — asking n8n agent to merge PR!'
@@ -56,17 +57,18 @@ pipeline {
                 curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
                 -H "Content-Type: application/json" \
                 -d "{
-                    \\"job_name\\": \\"${JOB_NAME}\\",
+                     \\"job_name\\": \\"${JOB_NAME}\\",
                     \\"build_number\\": \\"${BUILD_NUMBER}\\",
-                    \\"build_status\\": \\"FAILURE\\",
+                    \\"build_status\\": \\"SUCCESS\\",
                     \\"branch\\": \\"develop\\",
                     \\"developer\\": \\"${GIT_AUTHOR_NAME}\\",
-                    \\"tests_passed\\": \\"0\\",
-                    \\"tests_failed\\": \\"40\\",
+                    \\"tests_passed\\": \\"40\\",
+                    \\"tests_failed\\": \\"0\\",
                     \\"pr_action\\": \\"close\\",
                     \\"repo\\": \\"manjusanjay/temp\\",
                     \\"base_branch\\": \\"release\\",
-                    \\"head_branch\\": \\"develop\\"
+                    \\"head_branch\\": \\"develop\\",
+                    \\"pr_number\\": \\"${PR_NUMBER}\\"
                 }" || true
             '''
             echo 'Tests failed — asking n8n agent to close PR!'
