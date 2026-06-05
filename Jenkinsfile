@@ -41,7 +41,7 @@ pipeline {
                     \\"tests_passed\\": \\"40\\",
                     \\"tests_failed\\": \\"0\\",
                     \\"pr_action\\": \\"merge\\",
-                    \\"repo\\": \\"manjusanjay/it-helpdesk-agent_\\",
+                    \\"repo\\": \\"manjusanjay/temp\\",
                     \\"base_branch\\": \\"release\\",
                     \\"head_branch\\": \\"develop\\",
                     \\"pr_number\\": \\"${PR_NUMBER}\\"
@@ -63,7 +63,7 @@ pipeline {
                     \\"tests_passed\\": \\"0\\",
                     \\"tests_failed\\": \\"40\\",
                     \\"pr_action\\": \\"close\\",
-                    \\"repo\\": \\"manjusanjay/it-helpdesk-agent_\\",
+                    \\"repo\\": \\"manjusanjay/temp\\",
                     \\"base_branch\\": \\"release\\",
                     \\"head_branch\\": \\"develop\\",
                     \\"pr_number\\": \\"${PR_NUMBER}\\"
