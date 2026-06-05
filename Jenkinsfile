@@ -29,7 +29,6 @@ pipeline {
         }
         success {
             sh '''
-                PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
                 -H "Content-Type: application/json" \
                 -d "{
@@ -43,15 +42,13 @@ pipeline {
                     \\"pr_action\\": \\"merge\\",
                     \\"repo\\": \\"manjusanjay/temp\\",
                     \\"base_branch\\": \\"release\\",
-                    \\"head_branch\\": \\"develop\\",
-                    \\"pr_number\\": \\"${PR_NUMBER}\\"
+                    \\"head_branch\\": \\"develop\\"
                 }" || true
             '''
             echo 'Tests passed — asking n8n agent to merge PR!'
         }
         failure {
             sh '''
-                PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
                 -H "Content-Type: application/json" \
                 -d "{
@@ -65,8 +62,7 @@ pipeline {
                     \\"pr_action\\": \\"close\\",
                     \\"repo\\": \\"manjusanjay/temp\\",
                     \\"base_branch\\": \\"release\\",
-                    \\"head_branch\\": \\"develop\\",
-                    \\"pr_number\\": \\"${PR_NUMBER}\\"
+                    \\"head_branch\\": \\"develop\\"
                 }" || true
             '''
             echo 'Tests failed — asking n8n agent to close PR!'
