@@ -27,10 +27,9 @@ pipeline {
         always {
             junit 'test-results.xml'
         }
-        success {
+            success {
             sh '''
-                PR_NUMBER=$(echo ${JOB_NAME} | awk -F'PR-' '{print $2}')
-                echo "PR Number extracted: ${PR_NUMBER}"
+                PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
                 -H "Content-Type: application/json" \
                 -d "{
