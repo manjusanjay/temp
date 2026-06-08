@@ -29,6 +29,10 @@ pipeline {
         }
         success {
             sh '''
+                if [ -z "${CHANGE_ID}" ]; then
+                    echo "Not a PR build — skipping merge notification"
+                    exit 0
+                fi
                 PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 echo "PR Number extracted: ${PR_NUMBER}"
                 curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
@@ -52,6 +56,10 @@ pipeline {
         }
         failure {
             sh '''
+                if [ -z "${CHANGE_ID}" ]; then
+                    echo "Not a PR build — skipping failure notification"
+                    exit 0
+                fi
                 PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 echo "PR Number extracted: ${PR_NUMBER}"
                 curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
