@@ -35,7 +35,7 @@ pipeline {
                 fi
                 PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 echo "PR Number extracted: ${PR_NUMBER}"
-                curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
+                curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate2 \
                 -H "Content-Type: application/json" \
                 -d "{
                     \\"job_name\\": \\"${JOB_NAME}\\",
@@ -62,7 +62,7 @@ pipeline {
                 fi
                 PR_NUMBER=$(echo ${JOB_NAME} | grep -oP '(?<=PR-)\\d+')
                 echo "PR Number extracted: ${PR_NUMBER}"
-                curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate \
+                curl -X POST http://172.17.0.1:5678/webhook-test/cicd-gate2 \
                 -H "Content-Type: application/json" \
                 -d "{
                      \\"job_name\\": \\"${JOB_NAME}\\",
