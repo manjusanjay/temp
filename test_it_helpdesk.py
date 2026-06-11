@@ -19,7 +19,7 @@ class TestCreateTicket:
     def test_create_ticket_returns_ticket_id(self):
         result = create_ticket("VPN not connecting", "P2")
         assert "ticket_id" in result
-        assert result["ticket_id"] == "WRONG_VALUE"  # deliberately failing
+        assert result["ticket_id"].startswith("TKT-")
 
     def test_create_ticket_stores_correct_summary(self):
         result = create_ticket("Outlook is slow", "P3")
