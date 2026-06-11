@@ -5,6 +5,10 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
+                    if [ -z "${CHANGE_ID}" ]; then
+                        echo "Not a PR build — skipping merge notification"
+                        exit 0
+                    fi
                     pip3 install pytest flask google-generativeai \
                         chromadb sentence-transformers \
                         --break-system-packages --quiet
@@ -15,6 +19,10 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 sh '''
+                    if [ -z "${CHANGE_ID}" ]; then
+                        echo "Not a PR build — skipping merge notification"
+                        exit 0
+                    fi
                     python3 -m pytest test_it_helpdesk.py \
                         -v --tb=short \
                         --junit-xml=${WORKSPACE}/test-results.xml
