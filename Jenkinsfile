@@ -28,10 +28,11 @@ pipeline {
     }
 
     post {
-        always {
-            junit 'test-results.xml'
-        }
+        // always {
+        //     junit 'test-results.xml'
+        // }
         success {
+            junit 'test-results.xml'
             sh '''
                 if [ -z "${CHANGE_ID}" ]; then
                     echo "Not a PR build — skipping merge notification"
@@ -59,6 +60,7 @@ pipeline {
             echo 'Tests passed — asking n8n agent to merge PR!'
         }
         failure {
+            junit 'test-results.xml'
             sh '''
                 if [ -z "${CHANGE_ID}" ]; then
                     echo "Not a PR build — skipping failure notification"
