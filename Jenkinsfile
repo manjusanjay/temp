@@ -4,11 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh '''
-                    if [ -z "${CHANGE_ID}" ]; then
-                        echo "Not a PR build — skipping merge notification"
-                        exit 0
-                    fi
+                sh '''                   
                     pip3 install pytest flask google-generativeai \
                         chromadb sentence-transformers \
                         --break-system-packages --quiet
